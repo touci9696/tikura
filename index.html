@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARKIVA - Enhance Your Beauty</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fdf2f8 0%, #ffffff 50%, #fce7f3 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ec4899;
+            letter-spacing: 1px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #ec4899;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ec4899;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-container {
+            max-width: 1200px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .hero-content {
+            text-align: left;
+            animation: fadeInLeft 1s ease-out;
+        }
+        
+        .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: #ec4899;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: 2px;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            color: #6b7280;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #ec4899, #f472b6);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(236, 72, 153, 0.4);
+        }
+        
+        /* Makeup Elements */
+        .makeup-showcase {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: fadeInRight 1s ease-out;
+        }
+        
+        .makeup-container {
+            position: relative;
+            width: 500px;
+            height: 500px;
+        }
+        
+        .makeup-item {
+            position: absolute;
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+        }
+        
+        .lipstick-1 {
+            top: 10%;
+            left: 20%;
+            animation-delay: 0s;
+        }
+        
+        .lipstick-2 {
+            top: 60%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+        
+        .brush {
+            top: 30%;
+            left: 60%;
+            animation-delay: 0.5s;
+        }
+        
+        .powder {
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 1.5s;
+        }
+        
+        .eyeliner {
+            top: 80%;
+            right: 40%;
+            animation-delay: 2s;
+        }
+        
+        .mascara {
+            top: 5%;
+            right: 30%;
+            animation-delay: 0.8s;
+        }
+        
+        .palette {
+            bottom: 10%;
+            right: 20%;
+            animation-delay: 1.2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* Decorative Elements */
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ec4899;
+            border-radius: 50%;
+            animation: sparkle 2s infinite ease-in-out;
+        }
+        
+        .sparkle-1 { top: 20%; left: 10%; animation-delay: 0s; }
+        .sparkle-2 { top: 40%; right: 15%; animation-delay: 0.5s; }
+        .sparkle-3 { bottom: 30%; left: 25%; animation-delay: 1s; }
+        .sparkle-4 { top: 70%; right: 30%; animation-delay: 1.5s; }
+        .sparkle-5 { bottom: 15%; right: 10%; animation-delay: 2s; }
+        
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .features-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #ec4899;
+            margin-bottom: 3rem;
+            font-weight: 600;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #ec4899;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-text {
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        /* Animations */
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+            
+            .brand-name {
+                font-size: 3rem;
+            }
+            
+            .makeup-container {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .makeup-item {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">TARKIVA</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <!-- Decorative Sparkles -->
+        <div class="sparkle sparkle-1"></div>
+        <div class="sparkle sparkle-2"></div>
+        <div class="sparkle sparkle-3"></div>
+        <div class="sparkle sparkle-4"></div>
+        <div class="sparkle sparkle-5"></div>
+        
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="brand-name">TARKIVA</h1>
+                <p class="tagline">Enhance Your Beauty</p>
+                <button class="cta-button" onclick="scrollToShop()">Shop Now</button>
+            </div>
+            
+            <div class="makeup-showcase">
+                <div class="makeup-container">
+                    <div class="makeup-item lipstick-1">💄</div>
+                    <div class="makeup-item lipstick-2">💋</div>
+                    <div class="makeup-item brush">🖌️</div>
+                    <div class="makeup-item powder">🎨</div>
+                    <div class="makeup-item eyeliner">✏️</div>
+                    <div class="makeup-item mascara">🖊️</div>
+                    <div class="makeup-item palette">🎭</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="shop">
+        <div class="features-container">
+            <h2 class="features-title">Why Choose TARKIVA</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3 class="feature-title">Premium Quality</h3>
+                    <p class="feature-text">Luxurious formulas crafted with the finest ingredients for exceptional results.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌸</div>
+                    <h3 class="feature-title">Natural Beauty</h3>
+                    <p class="feature-text">Enhance your natural features with our carefully curated collection.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💎</div>
+                    <h3 class="feature-title">Elegant Design</h3>
+                    <p class="feature-text">Sophisticated packaging that reflects the luxury within every product.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Perfect Match</h3>
+                    <p class="feature-text">Find your perfect shade with our extensive range of colors and tones.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll function
+        function scrollToShop() {
+            document.getElementById('shop').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe feature cards
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.feature-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96e905d2e666ec8d',t:'MTc1NTA5NjYwNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
